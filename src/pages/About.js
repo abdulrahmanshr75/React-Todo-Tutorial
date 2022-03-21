@@ -1,9 +1,26 @@
 import React from "react";
+import { Link, useRouteMatch, Route } from "react-router-dom";
+import SinglePage from "./SinglePage";
 
-const About = () => {
+const About = (props) => {
+  const { url, path } = useRouteMatch();
   return (
     <div>
-      <h1>Made by Abdulrahman Shrshar 2022</h1>
+      <ul className="navBar">
+        <li>
+          <Link className="oneLink" to={`${url}/about-app`}>
+            About App
+          </Link>
+        </li>
+        <li>
+          <Link className="oneLink" to={`${url}/about-author`}>
+            About Author
+          </Link>
+        </li>
+      </ul>
+      <Route path={`${path}/:slug`}>
+        <SinglePage />
+      </Route>
     </div>
   );
 };
